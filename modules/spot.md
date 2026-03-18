@@ -63,9 +63,15 @@ const balances = await client.getBalances();
 const usdt = balances.find(b => b.coin === 'USDT');
 ```
 
+## Workflow: Market Buy with Quote Amount (e.g. "buy $500 of BTC")
+
+1. `getSymbolPriceTicker({ symbol: 'BTCUSDT' })` → price
+2. `quantity = quoteAmount / price` (e.g. 500 / 95000 ≈ 0.00526)
+3. Round to symbol precision from `getExchangeInfo()` (lotSize, stepSize)
+4. `submitNewOrder({ symbol, side: 'BUY', type: 'MARKET', quantity })`
+
 ## Key Rules
 
 - `quantity` for spot is in **base asset** (e.g. BTC for BTCUSDT)
-- For market buy with quote amount (e.g. "buy $500 of BTC"), compute: `quantity = quoteAmount / price`
-- Get price via `client.getSymbolPriceTicker({ symbol })` before placing market buys with quote amount
-- Use `client.getExchangeInfo()` for `lotSize`, `minQty`, `stepSize` when rounding quantities
+- For market buy with quote amount: compute `quantity = quoteAmount / price`, then round to lot size
+- Use `client.getExchangeInfo()` for `lotSize`, `minQty`, `stepSize` when rounding

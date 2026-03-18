@@ -1,11 +1,11 @@
 ---
 name: binance-trading
 description: >-
-  Use when the user asks to buy, sell, place orders, check balance, manage
-  positions, or trade on Binance. Covers spot, USD-M futures, COIN-M futures,
-  portfolio margin. Works with the `binance` npm package. Use for trading,
-  account queries, positions. For market data only (prices, orderbook) use
-  modules/market.md. Requires Node.js and npm.
+  Trades on Binance via the binance npm package. Supports spot, USD-M futures,
+  COIN-M futures, and portfolio margin. Use when the user asks to buy, sell,
+  place orders, check balance, manage positions, transfer funds, or trade on
+  Binance. For market data only (prices, orderbook) load modules/market.md.
+  Requires Node.js and npm install binance.
 license: MIT
 metadata:
   version: "1.0.0"
@@ -95,11 +95,27 @@ Load modules on-demand. When user request matches a category, fetch the module o
 
 For exact method signatures and parameters, read `node_modules/binance/llms.txt` when needed. The SDK ships this file for AI consumption.
 
+For edge cases (precision, errors, contract size conversion), see [references/edge-cases.md](references/edge-cases.md).
+
 ---
 
 ## Write Operation Confirmation
 
 For mainnet write operations (place order, cancel, transfer), confirm parameters with the user before executing. For testnet, execution can proceed without extra confirmation.
+
+---
+
+## Workflow Checklist
+
+Before placing orders:
+
+```
+- [ ] Credentials set (BINANCE_API_KEY, BINANCE_API_SECRET)
+- [ ] Correct client selected (MainClient spot, USDMClient futures, etc.)
+- [ ] Testnet vs mainnet confirmed
+- [ ] quantity in correct unit (base for spot, contracts for futures)
+- [ ] Mainnet: user confirmed params before execute
+```
 
 ---
 

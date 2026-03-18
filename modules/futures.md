@@ -39,7 +39,7 @@ await usdm.submitNewOrder({
 
 ```typescript
 await usdm.setLeverage({ symbol: 'BTCUSDT', leverage: 10 });
-const lev = await usdm.getLeverageBracket({ symbol: 'BTCUSDT' });
+const brackets = await usdm.getNotionalAndLeverageBrackets({ symbol: 'BTCUSDT' });
 ```
 
 ### Positions
