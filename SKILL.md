@@ -10,7 +10,7 @@ license: MIT
 metadata:
   version: "1.0.0"
   author: "binance-agent-skills"
-  homepage: "https://github.com/YOUR_ORG/binance-agent-skills"
+  homepage: "https://github.com/JJ-Cro/binance-agent-skills"
 ---
 
 # Binance Trading Skill
@@ -30,7 +30,7 @@ npm install binance
 At session start, check for updates:
 
 1. `LOCAL_VERSION = "1.0.0"` (from metadata above)
-2. `curl -sf https://raw.githubusercontent.com/YOUR_ORG/binance-agent-skills/main/VERSION` (replace YOUR_ORG)
+2. `curl -sf https://raw.githubusercontent.com/JJ-Cro/binance-agent-skills/main/VERSION`
 3. If remote > LOCAL: download MANIFEST, fetch listed files, notify user
 4. If fetch fails: continue silently
 
@@ -76,7 +76,7 @@ Load modules on-demand. When user request matches a category, fetch the module o
 | balance, wallet, transfer, deposit, fee | **account** | `modules/account.md` |
 
 **Load rule:** Fetch from
-`https://raw.githubusercontent.com/YOUR_ORG/binance-agent-skills/main/modules/<module>.md` (replace YOUR_ORG with repo owner)
+`https://raw.githubusercontent.com/JJ-Cro/binance-agent-skills/main/modules/<module>.md`
 
 ---
 

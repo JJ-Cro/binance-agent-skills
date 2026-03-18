@@ -5,12 +5,12 @@ Agent skills for trading on Binance using the [binance](https://www.npmjs.com/pa
 ## Install
 
 ```bash
-npx skills add YOUR_ORG/binance-agent-skills
+npx skills add JJ-Cro/binance-agent-skills
 ```
 
 Or copy the URL and ask your AI assistant:
 
-> Please read https://raw.githubusercontent.com/YOUR_ORG/binance-agent-skills/main/SKILL.md, save it as a skill, and help me trade on Binance.
+> Please read https://raw.githubusercontent.com/JJ-Cro/binance-agent-skills/main/SKILL.md, save it as a skill, and help me trade on Binance.
 
 ## Capabilities
 
