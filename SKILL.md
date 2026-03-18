@@ -25,6 +25,26 @@ Trade on Binance using the `binance` npm package. Supports spot, USD-M futures, 
 npm install binance
 ```
 
+## Language Default
+
+- Use **TypeScript by default** for all code examples and generated scripts.
+- Use JavaScript only if the user explicitly asks for JavaScript.
+
+---
+
+## WebSocket-First Rule (Gap Prevention)
+
+When a workflow needs both a snapshot fetch (REST) and streaming updates (WebSocket), always connect WebSocket first to reduce missing in-between data.
+
+Required order:
+
+1. Create and connect `WebsocketClient`, register handlers, subscribe to stream(s)
+2. Confirm stream is live (open/subscribed/first event)
+3. Fetch REST snapshot/backfill
+4. Reconcile by event time/update IDs and then process live updates
+
+Never do "REST first, WebSocket later" for live-tracking flows where gaps matter.
+
 ## Auto Update (optional, at session start)
 
 At session start, check for updates:
@@ -94,6 +114,8 @@ Load modules on-demand. When user request matches a category, fetch the module o
 ## API Reference
 
 For exact method signatures and parameters, read `node_modules/binance/llms.txt` when needed. The SDK ships this file for AI consumption.
+
+If a user asks for behavior not explicitly covered by this skill/modules, consult `node_modules/binance/llms.txt` before answering or executing.
 
 For edge cases (precision, errors, contract size conversion), see [references/edge-cases.md](references/edge-cases.md).
 
